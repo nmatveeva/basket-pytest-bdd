@@ -3,10 +3,16 @@ Feature: Product Basket
   I want to carry products in a basket.
 
 
-  Scenario: Add products to a basket
-    Given the basket has "3" product(s)
-    When "1" product(s) added to the basket
-    Then the basket contains "4" product(s)
+  Scenario Outline: Add products to a basket
+    Given the basket has "<init>" product(s)
+    When "<some>" product(s) added to the basket
+    Then the basket contains "<total>" product(s)
+
+    Examples: Amounts
+    | init | some | total |
+    | 1    | 2    | 3     |
+    | 4    | -3   | 1     |
+    | 5    | 0    | 5     |
 
 
   Scenario: Remove products from a basket
